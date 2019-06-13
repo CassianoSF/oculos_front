@@ -16,7 +16,7 @@ tag ToolTip < svg:g
         <self transform=(transform)>
             <svg:rect height="30" width="{width}" style="fill: black">
             <svg:text fill="#ffffff" font-size="12" font-family="Nunito" x="5" y="20">
-                data.selected_leituras
+                data.selected_leituras * 100
 
 
 tag Crosshair < svg:g
@@ -151,7 +151,8 @@ tag LineChart
 
 tag App
 
-    prop leituras
+    prop leituras default: []
+    prop valores default: []
     prop last_request
 
     def mount
@@ -168,6 +169,7 @@ tag App
                 url: "http://localhost:3001/leituras", 
                 method: 'get'
             })):data
+            valores = leituras.map do |l| 1/l * 250
         render
 
     def render
@@ -184,9 +186,9 @@ tag App
                                 <small>
                                     "Cassiano Zucco"
                                 <small>
-                                    "Elvis"
+                                    "Élvis Martello"
                                 <small>
-                                    "Lucas"
+                                    "Lucas Rodrigues"
                                 <small>
                                     "Eduardo Ferrarezi"
                         <div .col>    
@@ -198,7 +200,7 @@ tag App
                                 <small>
                                     "Willian Agostini"
                                 <small>
-                                    "Matheus"
+                                    "Matheus Grigol Ortolan"
 
                 <header .content__title>
                     <div .card>
@@ -206,6 +208,12 @@ tag App
                             <header .content__title>
                                 <h1>
                                     "Luminosidade"
+                                <small>
+                                    "Média: {(valores.reduce((do |a,b| a + b), 0) / leituras:length) * 100}"
+                                <small>
+                                    "Mínima: {(Math.min *valores) * 100}"
+                                <small>
+                                    "Máxima: {(Math.max *valores) * 100}"
                         <LineChart[leituras]>
 
 
