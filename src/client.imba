@@ -16,7 +16,7 @@ tag ToolTip < svg:g
         <self transform=(transform)>
             <svg:rect height="30" width="{width}" style="fill: black">
             <svg:text fill="#ffffff" font-size="12" font-family="Nunito" x="5" y="20">
-                data.selected_leituras * 100
+                (data.selected_leituras * 100).toFixed(2)
 
 
 tag Crosshair < svg:g
@@ -209,11 +209,11 @@ tag App
                                 <h1>
                                     "Luminosidade"
                                 <small>
-                                    "Média: {(valores.reduce((do |a,b| a + b), 0) / leituras:length) * 100}"
+                                    "Média: {((valores.reduce((do |a,b| a + b), 0) / leituras:length) * 100).toFixed(2)}"
                                 <small>
-                                    "Mínima: {(Math.min *valores) * 100}"
+                                    "Mínima: {((Math.min *valores) * 100).toFixed(2)}"
                                 <small>
-                                    "Máxima: {(Math.max *valores) * 100}"
+                                    "Máxima: {((Math.max *valores) * 100).toFixed(2)}"
                         <LineChart[leituras]>
 
 
