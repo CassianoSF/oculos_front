@@ -28,7 +28,7 @@
     "axios": "^0.19.0",
     "express": "^4.16.2",
     "imba": "^1.4.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   }
